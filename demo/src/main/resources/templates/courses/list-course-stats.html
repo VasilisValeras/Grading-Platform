@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Courses Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Course Stats</h3>
+	<hr>
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Mean</th>
+				<th>Max</th>
+				<th>Min</th>
+				<th>Std Deviation</th>
+				<th>Variance</th>
+				<th>Median</th>
+				<th>Kurtosis</th>
+				<th>Skewness</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<td th:text="${stats.mean}" />	
+			<td th:text="${stats.max}" />	
+			<td th:text="${stats.min}" />	
+			<td th:text="${stats.std_deviation}" />	
+			<td th:text="${stats.variance}" />	
+			<td th:text="${stats.median}" />
+			<td th:text="${stats.kurtosis}" />	
+			<td th:text="${stats.skewness}" />	
+			<td>
+		</tbody>
+		
+		
+</div>
+			<!-- Add a button -->
+	<a th:href="@{/courses/list}"
+		class="btn btn-primary btn-sm mb-3">
+		Go to courses list
+	</a>
+</body>
+</html>
+
+
+

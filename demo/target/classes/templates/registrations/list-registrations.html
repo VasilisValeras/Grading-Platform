@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Student Registration Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Student Registration Directory</h3>
+	<hr>
+	
+	<!-- Add a button -->
+	<a th:href="@{/registrations/showFormForAdd}"
+		class="btn btn-primary btn-sm mb-3">
+		Add Student Registration
+	</a>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Id</th>
+				<th>Course name</th>
+				<th>Name</th>
+				<th>Year of registration</th>
+				<th>Semester</th>
+				<th>Project grade</th>
+				<th>Final exams grade</th>
+				<th>Final grade</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempRegistration : ${registrations}">
+			
+				<td th:text="${tempRegistration.id}" />	
+				<td th:text="${tempRegistration.course.name}" />	
+				<td th:text="${tempRegistration.name}" />	
+				<td th:text="${tempRegistration.yearOfRegistration}" />	
+				<td th:text="${tempRegistration.semester}" />	
+				<td th:text="${tempRegistration.projectGrade}" />	
+				<td th:text="${tempRegistration.finalExamsGrade}" />
+				<td th:text="${tempRegistration.finalGrade}" />
+				<td>
+			
+					<!-- Add "delete" button/link -->					
+					<a th:href="@{/registrations/delete(studentRegId=${tempRegistration.id})}"
+					   class="btn btn-danger btn-sm"
+					   onclick="if (!(confirm('Are you sure you want to delete this student registration?'))) return false">
+						Delete
+					</a>
+					
+					<!-- Add "update" button/link -->
+					<a th:href="@{/registrations/showFormForUpdate(registrationId=${tempRegistration.id})}"
+					   class="btn btn-info btn-sm">
+						Update
+					</a>
+					
+					<!-- Add "show registered students by course" button/link -->
+					<a th:href="@{/registrations/listStudentsByCourse(courseId=${tempRegistration.course.id})}"
+					   class="btn btn-info btn-sm">
+						Show all registered students
+					</a>
+					
+					
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	<!-- Add a button -->
+	<a th:href="@{/courses/list}"
+		class="btn btn-primary btn-sm mb-3">
+		Go to courses list
+	</a>
+	
+	<!-- Add a button -->
+	<a th:href="@{/logout}"
+		class="btn btn-danger btn-sm mb-3">
+		Log out
+	</a>
+	
+</div>
+	
+</body>
+</html>
+
+
+
